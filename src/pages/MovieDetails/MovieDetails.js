@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
+import { Suspense, useEffect, useState } from "react";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import * as Api from '../../API/ApiRequest';
 import PropTypes from 'prop-types';
 import { HiArrowSmLeft } from 'react-icons/hi';
@@ -12,6 +12,8 @@ import {
   Label,
   TextContent,
   AdditionalInfoBox,
+  AdditionalLink,
+  LinkStyled,
 } from './MovieDetails.styled';
 
 const initialState = {
@@ -47,34 +49,36 @@ const MovieDetails = () => {
           />
           <InfoBox>
             <Title>{title}</Title>
-            <Label>User score: {Math.ceil(vote_average *10)} %</Label>
+            <Label>User score: {Math.ceil(vote_average * 10)} %</Label>
             <Label>Overview</Label>
             <TextContent>{overview}</TextContent>
             <Label>Genres</Label>
-            <p>{movieGenres}</p>
+            <TextContent>{movieGenres}</TextContent>
           </InfoBox>
         </MovieBox>
         <AdditionalInfoBox>
-          Additional information
+          <Label> Additional information</Label>
           <ul>
-            <li>
-              <NavLink
+            <LinkStyled>
+              <AdditionalLink
                 to={`/movies/${movieId}/cast`}
                 state={{ from: location.state?.from ?? '/' }}
               >
                 Cast
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
+              </AdditionalLink>
+            </LinkStyled>
+            <LinkStyled>
+              <AdditionalLink
                 to={`/movies/${movieId}/reviews`}
                 state={{ from: location.state?.from ?? '/' }}
               >
                 Reviews
-              </NavLink>
-            </li>
+              </AdditionalLink>
+            </LinkStyled>
           </ul>
-          <Outlet/>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </AdditionalInfoBox>
       </>
     );

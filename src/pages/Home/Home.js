@@ -18,11 +18,10 @@ const Home = () => {
     <>
       <Title>Trending now</Title>
       <MoviesList>
-        {movies.map(({ id, title, release_date }) => {
+        {movies.map(({ id, title }) => {
           return (
             <MovieItem key={id}>
               <Link to={`/movies/${id}`}>{title}</Link>
-              <p>{release_date}</p>
             </MovieItem>
           );
         })}

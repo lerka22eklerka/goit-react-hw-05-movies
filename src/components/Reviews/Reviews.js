@@ -14,7 +14,6 @@ const Reviews = () => {
          .catch('error');
      }, [movieId]);
     
-    // console.log(reviews.length);
     return (
       <>
         {reviews.length > 0 ? (

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import * as Api from '../../API/ApiRequest';
 import PropTypes from 'prop-types';
-import { Link, MovieBox } from "./Movies.styled";
+import { Link, MovieBox, RequestItem, RequestList } from "./Movies.styled";
 
 const Movies = () => {
     const [movies, setMovies] = useState([]);
@@ -24,14 +24,14 @@ const Movies = () => {
         <MovieBox>
             <SearchBar onSubmit={handleSearch} />
             {movies.length > 0 && (
-                <ul>
+                <RequestList>
                     {movies.map(({ id, title }) => (
-                        <li key={id}>
+                        <RequestItem key={id}>
                             <Link to={`${id}`} state={{ from: location }}>
                                 {title}
                             </Link>                           
-                    </li>))}
-                </ul>
+                    </RequestItem>))}
+                </RequestList>
             )}
         </MovieBox>
     )

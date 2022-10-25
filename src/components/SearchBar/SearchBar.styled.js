@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const FormBtnStyled = styled.button`
-    font-size: 18px;
-    padding: 7px 12px;
+    font-size: 16px;
+    padding: 8px 16px;
     margin-left: 10px;
     background-color: orangered;
     border: 0;
@@ -23,6 +23,6 @@ export const InputStyled = styled.input`
   transition: border-color linear 250ms;
   &:focus {
     outline: 0;
-    border-color: #e30b5c;
+    border: 2px solid orangered;
   }
 `;

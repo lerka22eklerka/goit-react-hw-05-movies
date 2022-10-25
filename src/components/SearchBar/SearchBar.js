@@ -24,7 +24,6 @@ export const SearchBar = ({ onSubmit }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <FormBtnStyled type="submit"></FormBtnStyled>
         <InputStyled
           onChange={handleChange}
           name="query"
@@ -34,6 +33,7 @@ export const SearchBar = ({ onSubmit }) => {
           autoFocus
           placeholder="Search movies"
         />
+        <FormBtnStyled type="submit">Search</FormBtnStyled>
       </form>
     </div>
   );

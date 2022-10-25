@@ -9,7 +9,6 @@ const Cast = () => {
   const { movieId } = useParams();
 
     useEffect(() => {
-      console.log(movieId);
     Api.fetchMovieCast(movieId)
       .then(setCast)
       .catch('error');
