@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import * as Api from '../../API/ApiRequest';
-import { CastItem, CastList } from "./Cast.styled";
+import { CastItem, CastList, CastTitle } from "./Cast.styled";
 import { useParams } from "react-router-dom";
+import defaultImg from '../../img/image-coming-soon.webp';
 
 
 const Cast = () => {
@@ -26,8 +27,9 @@ const Cast = () => {
                   alt={name}
                 />
               )}
-              <p>{name}</p>
-              <p>Character: {character}</p>
+              {!profile_path && <img src={defaultImg} alt={name} />}
+              <CastTitle>{name}</CastTitle>
+              <CastTitle>Character: {character}</CastTitle>
             </CastItem>
           ))}
         </CastList>
