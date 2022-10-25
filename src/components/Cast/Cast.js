@@ -11,7 +11,7 @@ const Cast = () => {
     useEffect(() => {
       console.log(movieId);
     Api.fetchMovieCast(movieId)
-      .then(cast => setCast(cast))
+      .then(setCast)
       .catch('error');
   }, [movieId]);
 

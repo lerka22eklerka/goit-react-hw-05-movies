@@ -28,7 +28,7 @@ const MovieDetails = () => {
     const location = useLocation();
 
        useEffect(() => {
-         Api.fetchMovieById(movieId).then(movie => setMovie(movie)).catch('error');
+         Api.fetchMovieById(movieId).then(setMovie).catch('error');
        }, [movieId]);
     
     const {title, poster_path, vote_average, overview, genres } = movie;
