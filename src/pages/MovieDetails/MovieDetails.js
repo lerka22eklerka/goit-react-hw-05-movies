@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import * as Api from '../../API/ApiRequest';
 import PropTypes from 'prop-types';
 import { HiArrowSmLeft } from 'react-icons/hi';
@@ -22,7 +22,7 @@ const initialState = {
   genres: [],
 };
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(initialState);
     const location = useLocation();
@@ -74,11 +74,14 @@ export const MovieDetails = () => {
               </NavLink>
             </li>
           </ul>
+          <Outlet/>
         </AdditionalInfoBox>
       </>
     );
 
 }
+
+export default MovieDetails;
 
 MovieDetails.propTypes = {
   id: PropTypes.string,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as Api from '../../API/ApiRequest';
 import { Link, MovieItem, MoviesList, Title } from './Home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -30,6 +30,8 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;
 
 Home.propTypes = {
   movies: PropTypes.array,
