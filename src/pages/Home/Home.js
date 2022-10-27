@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as Api from '../../API/ApiRequest';
-import { Link, MovieItem, MoviesList, Title } from './Home.styled';
+import { Title } from './Home.styled';
+import { MoviesList } from '../../components/MoviesList/MoviesList';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    Api.fetchTrendingMovies().then(movies => setMovies(movies));
+    Api.fetchTrendingMovies()
+      .then(movies => setMovies(movies))
+      .catch('error');
   }, []);
 
   if (!movies) {
@@ -17,15 +20,7 @@ const Home = () => {
   return (
     <>
       <Title>Trending now</Title>
-      <MoviesList>
-        {movies.map(({ id, title }) => {
-          return (
-            <MovieItem key={id}>
-              <Link to={`/movies/${id}`}>{title}</Link>
-            </MovieItem>
-          );
-        })}
-      </MoviesList>
+      {movies && <MoviesList movies={movies} />}
     </>
   );
 };

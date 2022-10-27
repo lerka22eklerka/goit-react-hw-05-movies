@@ -27,7 +27,8 @@ const initialState = {
 const MovieDetails = () => {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(initialState);
-    const location = useLocation();
+  const location = useLocation();
+  
 
        useEffect(() => {
          Api.fetchMovieById(movieId).then(setMovie).catch('error');
@@ -44,7 +45,7 @@ const MovieDetails = () => {
         </BackBtn>
         <MovieBox>
           <Image
-            src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+            src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
             alt={title}
           />
           <InfoBox>
